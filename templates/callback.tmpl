@@ -1,0 +1,9 @@
+<html>
+<head>
+<title>OneDrive 授权</title>
+<script>
+window.opener.postMessage({{ .user_info }}, '{{ .host }}');
+close();
+</script>
+</head>
+</html>

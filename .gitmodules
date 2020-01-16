@@ -1,0 +1,6 @@
+[submodule "frontend/admin"]
+	path = frontend/admin
+	url = https://github.com/hebingchang/onehub-admin-frontend
+[submodule "frontend/public"]
+	path = frontend/public
+	url = https://github.com/hebingchang/onehub-public-frontend
