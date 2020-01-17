@@ -16,7 +16,7 @@ docker run --detach \
 
 Then head to http://server-ip/admin/#/init to configure the application.
 
-**Notice that** currently the default Microsoft Graph Application configured in default `config.yaml` only supports the redirect back to `onehub.boar.ac.cn`. To support other domains, please create your own application in https://portal.azure.com/.
+**Notice that** currently the Microsoft Graph Application preconfigured in default `config.yaml` only supports the redirection back to `onehub.boar.ac.cn`. To support other domains, please create your own application in https://portal.azure.com/.
  
 ## Deploy
 ```shell script
