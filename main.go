@@ -39,7 +39,11 @@ func init() {
 
 func main() {
 	r := gin.Default()
-	r.Use(location.Default())
+	r.Use(location.New(location.Config{
+		Host:   "localhost:8080",
+		Scheme: "http",
+		Headers: location.Headers{Scheme: "X-Forwarded-Proto", Host: "X-Forwarded-Host"},
+	}))
 	r.Use(cors.New(cors.Config{
 		AllowCredentials: true,
 		AllowMethods:     []string{"PUT", "POST", "GET", "DELETE"},

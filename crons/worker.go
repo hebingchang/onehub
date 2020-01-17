@@ -14,10 +14,12 @@ var Cron *cron.Cron
 func StartCron() {
 	Cron = cron.New()
 	Cron.AddFunc("*/" + viper.GetString("RefreshInterval") + " * * * *", func() {
-		services.RefreshToken()
 		fs.Root = workers.WalkDrive()
 		fs.LastUpdate = time.Now()
 		fs.WriteFsDataFile()
+	})
+	Cron.AddFunc("*/30 * * * *", func() {
+		services.RefreshToken()
 	})
 	Cron.Start()
 }
