@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/gin-contrib/cors"
+	"github.com/gin-contrib/gzip"
 	"github.com/gin-contrib/location"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
@@ -41,6 +42,7 @@ func init() {
 
 func main() {
 	r := gin.Default()
+	r.Use(gzip.Gzip(gzip.DefaultCompression))
 	r.Use(location.New(location.Config{
 		Host:   "localhost:8080",
 		Scheme: "http",

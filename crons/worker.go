@@ -13,6 +13,10 @@ var Cron *cron.Cron
 var FsCronID cron.EntryID
 var TokenCronID cron.EntryID
 
+func init() {
+	services.RefreshToken()
+}
+
 func StartCron() {
 	Cron = cron.New()
 	FsCronID, _ = Cron.AddFunc("*/"+viper.GetString("RefreshInterval")+" * * * *", func() {
