@@ -3,6 +3,7 @@ Yet another OneDrive shared file explorer (inspired by [OneIndex](https://github
 
 The project is still under heavy development. Demo site: https://onehub.boar.ac.cn
 
+![screenshot](https://github.com/hebingchang/onehub/raw/master/docs/screenshot.png)
 ## Deploy with Docker
 (Recommended)
 ```shell script
