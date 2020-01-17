@@ -56,7 +56,7 @@ func ApiAdminGetConfig(c *gin.Context) {
 		Message: "ok",
 		Data:    ConfigRes{
 			RefreshInterval: viper.GetInt("RefreshInterval"),
-			NextScheduleUpdate: crons.Cron.Entries()[0].Next,
+			NextScheduleUpdate: crons.Cron.Entry(crons.FsCronID).Next,
 			Title: viper.GetString("Title"),
 		},
 	})
@@ -72,7 +72,7 @@ func ApiAdminPutConfig(c *gin.Context) {
 			Message: "刷新间隔应不少于5分钟且不大于60分钟",
 			Data:    ConfigRes{
 				RefreshInterval: viper.GetInt("RefreshInterval"),
-				NextScheduleUpdate: crons.Cron.Entries()[0].Next,
+				NextScheduleUpdate: crons.Cron.Entry(crons.FsCronID).Next,
 				Title: viper.GetString("Title"),
 			},
 		})

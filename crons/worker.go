@@ -10,15 +10,17 @@ import (
 )
 
 var Cron *cron.Cron
+var FsCronID cron.EntryID
+var TokenCronID cron.EntryID
 
 func StartCron() {
 	Cron = cron.New()
-	Cron.AddFunc("*/" + viper.GetString("RefreshInterval") + " * * * *", func() {
+	FsCronID, _ = Cron.AddFunc("*/"+viper.GetString("RefreshInterval")+" * * * *", func() {
 		fs.Root = workers.WalkDrive()
 		fs.LastUpdate = time.Now()
 		fs.WriteFsDataFile()
 	})
-	Cron.AddFunc("*/30 * * * *", func() {
+	TokenCronID, _ = Cron.AddFunc("*/30 * * * *", func() {
 		services.RefreshToken()
 	})
 	Cron.Start()

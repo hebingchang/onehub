@@ -9,7 +9,6 @@ import (
 	"github.com/spf13/viper"
 	"log"
 	"net/url"
-	"onehub/config"
 	"onehub/models"
 	"time"
 )
@@ -21,7 +20,7 @@ func getAuthUrl(redirect_uri string) (string) {
 		Path:       "/common/oauth2/v2.0/authorize",
 	}
 	q := oauth_url.Query()
-	q.Set("client_id", config.CLIENT_ID)
+	q.Set("client_id", viper.GetString("ClientID"))
 	q.Set("response_type", "code")
 	q.Set("redirect_uri", redirect_uri)
 	q.Set("response_mode", "query")
@@ -39,12 +38,12 @@ func OauthRedirect(c *gin.Context) {
 func OauthCallback(c *gin.Context) {
 	u := location.Get(c)
 	param := req.Param{
-		"client_id": config.CLIENT_ID,
+		"client_id": viper.GetString("ClientID"),
 		"scope":  "offline_access user.read files.read.all files.readwrite.all",
 		"code":  c.Query("code"),
 		"redirect_uri":  fmt.Sprintf("%s://%s/api/v1/admin/oauth/callback", u.Scheme, u.Host),
 		"grant_type":  "authorization_code",
-		"client_secret":  config.CLIENT_SECRET,
+		"client_secret":  viper.GetString("ClientSecret"),
 	}
 
 	// http://localhost:8080/api/v1/admin/oauth

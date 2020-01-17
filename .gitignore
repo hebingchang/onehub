@@ -1,4 +1,5 @@
 node_modules
 .idea
-config.yaml
+config/config.yaml
+config/fs.gob
 fs.gob

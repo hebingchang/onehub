@@ -21,14 +21,16 @@ func readConfig() {
 	viper.SetDefault("Title", "OneHub")
 	viper.SetDefault("ItemID", "")
 	viper.SetDefault("RefreshInterval", 30)
+	viper.SetDefault("ClientID", "5ff35b5b-320b-441d-846e-baf6f2dce255")
+	viper.SetDefault("ClientSecret", "BoplO[9-yeXZdPuiC:3x9soZ?RC9ilMs")
 
 	viper.SetConfigName("config")
 	viper.AddConfigPath("/etc/onehub/")
 	viper.AddConfigPath("$HOME/.onehub")
-	viper.AddConfigPath(".")
+	viper.AddConfigPath("./config/")
 	if err := viper.ReadInConfig(); err != nil {
 		if _, ok := err.(viper.ConfigFileNotFoundError); ok {
-			_, _ = os.Create("./config.yaml")
+			_, _ = os.Create("./config/config.yaml")
 		}
 	}
 }

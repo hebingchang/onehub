@@ -20,7 +20,7 @@ type DataFile struct {
 }
 
 func init() {
-	dataFile, err := os.OpenFile("fs.gob", os.O_RDWR|os.O_CREATE, 0666)
+	dataFile, err := os.OpenFile("./config/fs.gob", os.O_RDWR|os.O_CREATE, 0666)
 
 	if err != nil {
 		fmt.Println(err)
@@ -42,7 +42,7 @@ func init() {
 }
 
 func WriteFsDataFile() {
-	dataFile, err := os.OpenFile("fs.gob", os.O_RDWR|os.O_CREATE, 0666)
+	dataFile, err := os.OpenFile("./config/fs.gob", os.O_RDWR|os.O_CREATE, 0666)
 
 	if err != nil {
 		fmt.Println(err)
